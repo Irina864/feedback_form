@@ -1,0 +1,19 @@
+@use './variables';
+
+@mixin font($fs, $fc, $fw) {
+  font-family: variables.$font;
+  font-size: $fs;
+  color: $fc;
+  font-weight: $fw;
+}
+@mixin flex($fd, $jc, $ai) {
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+@mixin screenMobile {
+  @media screen and (max-width: 580px) {
+    @content;
+  }
+}

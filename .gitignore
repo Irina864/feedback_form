@@ -1,0 +1,32 @@
+# Директории сборки
+/dist
+/build
+
+# Логи
+*.log
+
+# Временные файлы
+*.tmp
+*.temp
+
+# Конфиденциальные файлы
+.env
+
+# node_modules
+/node_modules
+
+# Папки, создаваемые IDE
+.idea/
+.vscode/
+
+# Файлы кэша
+.cache/
+.cache-loader/
+
+# Файлы настроек
+package-lock.json
+yarn.lock
+
+# Системные файлы
+.DS_Store
+Thumbs.db

@@ -1,0 +1,87 @@
+@use './mixins';
+@use './variables';
+
+.modal-open {
+  overflow: hidden;
+}
+
+.overlay {
+  display: none;
+  pointer-events: none;
+}
+
+.overlay_active {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 1440px;
+  height: 100vh;
+  display: flex;
+  @include mixins.flex(row, center, center);
+  background-color: variables.$bgOverlay;
+  z-index: 5;
+  pointer-events: all;
+  animation: fadeIn 0.5s;
+}
+
+.modal {
+  width: 100%;
+  max-width: 365px;
+  padding: 30px;
+  display: flex;
+  @include mixins.flex(column, space-between, center);
+  gap: 30px;
+  border-radius: 20px;
+  background-color: variables.$colorBackgroundForm;
+  z-index: 6;
+  animation: slideIn 0.5s;
+  .modal__img {
+    width: 80px;
+    height: 80px;
+  }
+  .modal__text {
+    @include mixins.font(20px, variables.$colorText, 500);
+    text-align: center;
+    @include mixins.screenMobile {
+      @include mixins.font(18px, variables.$colorText, 500);
+    }
+  }
+}
+.modal__btn {
+  padding: 12px 16px;
+  max-width: 260px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  border: 0.5px solid variables.$colorButtonBorder;
+  @include mixins.font(16px, variables.$colorText, 500);
+  text-align: center;
+  cursor: pointer;
+  background-color: variables.$colorButtonLight;
+  &:hover {
+    background-color: variables.$colorButtonLightHover;
+  }
+  &:active {
+    background-color: variables.$colorButtonLightActive;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

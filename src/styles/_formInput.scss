@@ -1,0 +1,89 @@
+@use './mixins';
+@use './variables';
+
+.form-item {
+  width: 100%;
+  display: flex;
+  @include mixins.flex(column, flex-start, flex-start);
+  gap: 8px;
+  .form-item__label {
+    @include mixins.font(16px, variables.$colorText, 400);
+    line-height: 19.2px;
+    text-align: left;
+    @include mixins.screenMobile {
+      @include mixins.font(14px, variables.$colorText, 400);
+      line-height: 16.8px;
+    }
+  }
+  .form-item__input {
+    width: 100%;
+    max-width: 392px;
+    min-width: 125px;
+    height: 46px;
+    padding: 8px 16px;
+    background-color: variables.$colorInput;
+    border: 0.5px solid variables.$colorInput;
+    border-radius: 10px;
+    @include mixins.font(16px, variables.$colorText, 400);
+    line-height: 19.2px;
+    text-align: left;
+    @include mixins.screenMobile {
+      @include mixins.font(14px, variables.$colorText, 400);
+      line-height: 16.8px;
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+    &:active {
+      border: 0.5px solid variables.$colorInputBorderActive;
+    }
+    &:focus {
+      outline: none;
+      border: 0.5px solid variables.$colorInputBorderActive;
+    }
+    &:disabled {
+      background-color: variables.$colorInputDisabled;
+      border: 0.5px solid variables.$colorInputDisabled;
+      color: variables.$colorText;
+    }
+    &::placeholder {
+      @include mixins.font(16px, variables.$colorTextUnactive, 400);
+      line-height: 19.2px;
+      text-align: left;
+      @include mixins.screenMobile {
+        @include mixins.font(14px, variables.$colorTextUnactive, 400);
+        line-height: 16.8px;
+      }
+    }
+  }
+  .form-item__textarea {
+    width: 100%;
+    max-width: 816px;
+    height: 100%;
+    max-height: 500px;
+    padding: 8px 16px;
+    background-color: variables.$colorInput;
+    border: 0.5px solid variables.$colorInput;
+    border-radius: 10px;
+    @include mixins.font(16px, variables.$colorText, 400);
+    line-height: 19.2px;
+    text-align: left;
+    @include mixins.screenMobile {
+      @include mixins.font(14px, variables.$colorText, 400);
+      line-height: 16.8px;
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+    &:active {
+      border: 0.5px solid variables.$colorInputBorderActive;
+    }
+    &:focus {
+      outline: none;
+      border: 0.5px solid variables.$colorInputBorderActive;
+    }
+    &:disabled {
+      background-color: variables.$colorInputDisabled;
+      border: 0.5px solid variables.$colorInputDisabled;
+      color: variables.$colorText;
+    }
+  }
+}

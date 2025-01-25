@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тестовое задание itprofit (front)</title>
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="modal">
+        <img
+          class="modal__img"
+          src="<%= require('./assets/images/save_modal.svg') %>"
+          alt="save"
+        />
+        <div class="modal__text">
+          Заполните форму обратной связи, чтобы отправить сообщение
+        </div>
+        <button class="modal__btn">Закрыть</button>
+      </div>
+    </div>
+    <main class="main">
+      <section class="modal-section">
+        <button class="modal__btn">Модальное окно</button>
+      </section>
+      <section class="feedback">
+        <h2 class="feedback__title">Обратная связь</h2>
+        <form class="form" name="formFeedback" novalidate>
+          <div class="form-item">
+            <label for="sender" class="form-item__label">Имя</label>
+            <input
+              type="text"
+              name="sender"
+              id="sender"
+              class="form-item__input"
+              required
+            />
+          </div>
+          <div class="form-item">
+            <label for="email" class="form-item__label">Почта</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="form-item__input"
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,63}"
+              placeholder="example@mail.ru"
+              required
+            />
+          </div>
+          <div class="form-item">
+            <label for="phone" class="form-item__label">Телефон</label>
+            <input
+              type="tel"
+              name="tel"
+              id="phone"
+              class="form-item__input"
+              pattern="^\+7 \((?!000)\d{3}\) \d{3}-\d{2}-\d{2}$"
+              placeholder="+7 (999) 999-99-99"
+              required
+            />
+          </div>
+          <div class="form-item">
+            <label for="message" class="form-item__label">Сообщение</label>
+            <textarea
+              name="message"
+              id="message"
+              class="form-item__textarea"
+              rows="8"
+              required
+            ></textarea>
+          </div>
+          <button name="submitButton" type="submit" class="form__submit button">
+            Отправить
+          </button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
