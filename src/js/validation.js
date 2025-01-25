@@ -15,30 +15,29 @@ inputs.forEach((input) => {
   });
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const sendData = validateForm();
   if (sendData) {
-    postAjax(sendData, serverPath)
-      .then((response) => {
-        console.log('POST response: ', response);
-        if (response.status === 'success') {
-          document.querySelector('.modal__text').textContent = response.msg;
-          inputs.forEach((input) => {
-            input.value = '';
-          });
-          toggleModal(e);
-        }
-      })
-      .catch((response) => {
-        console.log('POST response: ', response);
-        const fields = response.fields;
-        for (const key in fields) {
-          const inputElement = form.elements[key];
-          createNewElement(fields[key], 'div', inputElement, 'error');
-          addErrorClass(inputElement);
-        }
-      });
+    try {
+      const response = await postAjax(sendData, serverPath);
+      console.log('POST response: ', response);
+      if (response.status === 'success') {
+        document.querySelector('.modal__text').textContent = response.msg;
+        inputs.forEach((input) => {
+          input.value = '';
+        });
+        toggleModal(e);
+      }
+    } catch (error) {
+      console.log('POST response: ', error);
+      const fields = error.fields;
+      for (const key in fields) {
+        const inputElement = form.elements[key];
+        createNewElement(fields[key], 'div', inputElement, 'error');
+        addErrorClass(inputElement);
+      }
+    }
   }
 });
 
