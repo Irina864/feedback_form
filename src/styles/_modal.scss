@@ -35,10 +35,6 @@
   background-color: variables.$colorBackgroundForm;
   z-index: 6;
   animation: slideIn 0.5s;
-  .modal__img {
-    width: 80px;
-    height: 80px;
-  }
   .modal__text {
     @include mixins.font(20px, variables.$colorText, 500);
     text-align: center;
